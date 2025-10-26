@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <chrono>
 #include <stdio.h>
 #include <string.h>
@@ -8,18 +7,17 @@ class Timer
 public:
     Timer()
     {
-        start = clock.now();
+        start = std::chrono::steady_clock::now();
     }
     // Returns the duration in seconds.
     double GetElapsed()
     {
-        auto end = clock.now();
+        auto end = std::chrono::steady_clock::now();
         auto duration = end - start;
         return std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count() * 1.e-9;
     }
 private:
     std::chrono::steady_clock::time_point start;
-    std::chrono::steady_clock clock;
 
     Timer(const Timer&) = delete;
     Timer operator=(const Timer*) = delete;
