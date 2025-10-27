@@ -1,3 +1,13 @@
 chmod +x compilar.sh
 
 ./compilar.sh
+
+Ver page faults:
+
+1. Executar com ./compilar.sh
+2. top no terminal para pegar o PID do processo (nome main).
+3. ps -o min_flt,maj_flt PID. Lista o page fault min e max
+
+Ver page faults projeto m1
+
+ps -o pid,min_flt,maj_flt $(pgrep -n main)
